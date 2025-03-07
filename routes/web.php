@@ -3,10 +3,7 @@
 use Illuminate\Support\Facades\Route;
 // use Livewire\Volt\Volt;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
-
+Route::view('/', 'livewire.pages.home-page')->name('home');
 Route::view('/explore', 'livewire.pages.explore-page')->name('explore');
 Route::view('/contact', 'livewire.pages.contact-page')->name('contact');
 Route::view('/home', 'livewire.pages.home-page')->name('home');
