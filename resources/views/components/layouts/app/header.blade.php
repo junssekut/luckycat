@@ -5,8 +5,14 @@
     @include('partials.head')
 </head>
 
-<body {{-- class="min-h-screen min-w-screen bg-[url('/public/assets/images/main-background.jpg')] bg-cover bg-bottom bg-no-repeat"> --}} class="min-h-screen min-w-screen  bg-cover bg-bottom bg-no-repeat">
-    {{ $slot }}
+<body class="min-h-screen min-w-screen bg-cover bg-bottom bg-no-repeat">
+    @persist('topbar')
+        <livewire:topbar />
+    @endpersist
+
+    <div class="flex justify-center items-center w-full h-full">
+        {{ $slot }}
+    </div>
 </body>
 
 </html>

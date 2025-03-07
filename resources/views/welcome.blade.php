@@ -1,5 +1,5 @@
 <x-layouts.app>
 
-    <livewire:topbar />
+    {{-- <livewire:topbar /> --}}
 
 </x-layouts.app>
