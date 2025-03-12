@@ -10,9 +10,7 @@
         "autoprefixer": "^10.4.20",
         "axios": "^1.7.4",
         "concurrently": "^9.0.1",
-        "laravel-vite-plugin": "^1.0",
-        "tailwindcss": "^4.0.9",
-        "vite": "^6.0"
+        "tailwindcss": "^4.0.9"
     },
     "optionalDependencies": {
         "@rollup/rollup-linux-x64-gnu": "4.9.5",
@@ -20,6 +18,10 @@
         "lightningcss-linux-x64-gnu": "^1.29.1"
     },
     "devDependencies": {
-        "daisyui": "^5.0.0"
+        "@tailwindcss/forms": "^0.5.10",
+        "@tailwindcss/typography": "^0.5.16",
+        "daisyui": "^5.0.0",
+        "laravel-vite-plugin": "^1.2.0",
+        "vite": "^6.2.1"
     }
 }

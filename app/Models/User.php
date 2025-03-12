@@ -8,10 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 
+use Filament\Panel;
+use Filament\Models\Contracts\FilamentUser;
+
 // Declare Eloquent Relationships
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -25,6 +28,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -69,5 +73,14 @@ class User extends Authenticatable
     public function events(): HasMany
     {
         return $this->hasMany(Event::class);
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        if ($this->role === $panel->getId()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
