@@ -8,8 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 
-class User extends Authenticatable
-{
+use Filament\Panel;
+use Filament\Models\Contracts\FilamentUser;
+
+// Declare Eloquent Relationships
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class User extends Authenticatable implements FilamentUser
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
@@ -22,6 +27,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -56,5 +62,24 @@ class User extends Authenticatable
             ->explode(' ')
             ->map(fn (string $name) => Str::of($name)->substr(0, 1))
             ->implode('');
+    }
+
+    public function tickets(): HasMany
+    {
+        return $this->hasMany(Ticket::class);
+    }
+
+    public function events(): HasMany
+    {
+        return $this->hasMany(Event::class);
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        if ($this->role === $panel->getId()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
