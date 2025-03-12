@@ -94,6 +94,13 @@ select:focus[data-flux-control] {
     font-style: normal;
   }
 
+html, body {
+    scroll-behavior: smooth;
+    overflow-x: hidden
+}
+* {
+    box-sizing: border-box;
+}
 .slider{
     width: 100%;
     height: var(--height);
@@ -143,6 +150,6 @@ select:focus[data-flux-control] {
     filter: grayscale(0);
 
     p {
-        @apply text-luckycat-900;
+        color: var(--hover, color-luckycat-900);
     }
 }

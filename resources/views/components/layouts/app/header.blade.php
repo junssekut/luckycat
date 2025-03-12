@@ -10,9 +10,15 @@
         <livewire:topbar />
     @endpersist
 
-    <div class="flex justify-center items-center w-full h-full">
+    <div class="flex flex-col justify-center items-center max-w-full h-full">
         {{ $slot }}
     </div>
+
+    @persist('footer')
+        <livewire:banner-list />
+        <livewire:footer />
+        <livewire:copyright />
+    @endpersist
 </body>
 
 </html>
