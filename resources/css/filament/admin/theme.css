@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+@import '../../../../vendor/filament/filament/resources/css/base.css';
+
+@config 'tailwind.config.js';
+
+* {
+    border-radius: 0 !important;
+}
+
+body > div.fi-layout.flex.min-h-screen.w-full.flex-row-reverse.overflow-x-clip > div.fi-main-ctn.w-screen.flex-1.flex-col.opacity-0 > main > div > section > div > div > div > div.col-\[--col-span-default\].fi-wi-widget.fi-filament-info-widget > section > div > div {
+    display: none !important;
+}
+
+body > div.fi-layout.flex.min-h-screen.w-full.flex-row-reverse.overflow-x-clip > div.fi-main-ctn.w-screen.flex-1.flex-col.opacity-0 > main > div > section > div > div > div > div.col-\[--col-span-default\].fi-wi-widget.fi-filament-info-widget {
+    display: none !important;
+}
+
+body > div.fi-layout.flex.min-h-screen.w-full.flex-row-reverse.overflow-x-clip > div.fi-main-ctn.w-screen.flex-1.flex-col.opacity-0 > main > div > section > div > div > div > div.col-\[--col-span-default\].fi-wi-widget.fi-account-widget {    width: 100% !important;
+    width: 100% !important;
+}
+body > div.fi-layout.flex.min-h-screen.w-full.flex-row-reverse.overflow-x-clip > div.fi-main-ctn.w-screen.flex-1.flex-col.opacity-0 > main > div > section > div > div > div {
+    display: block !important;
+}

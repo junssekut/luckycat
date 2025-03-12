@@ -78,7 +78,7 @@
                     <li><a>Item 3</a></li>
                 </ul>
             </div>
-            <a class="overflow-hidden" href="/"><img class="h-12 object-contain"
+            <a class="overflow-hidden" href="/" wire:navigate><img class="h-12 object-contain"
                     src="{{ asset('assets/images/luckycat-logo.png') }}" alt=""></a>
         </div>
         <div class="navbar-end w-full">
@@ -94,11 +94,14 @@
             </div>
 
             <div class="flex flex-row h-16">
+                <a href="/login" wire:navigate>
                 <button
-                    class="font-Geomisans w-24 h-full border border-black border-l-0 border-t-0 hover:bg-luckycat-500 hover:text-white ease-linear duration-300 cursor-pointer hover:border-b-2">LOGIN</button>
+                    class="font-Geomisans w-24 h-full border border-black border-l-0 border-t-0 hover:bg-luckycat-500 hover:text-white ease-linear duration-300 cursor-pointer hover:border-b-2">LOGIN</button></a>
+                <a href="/register" wire:navigate>
                 <button
                     class="font-Geomisans w-24 h-full bg-black text-white cursor-pointer hover:bg-luckycat-500 hover:text-white ease-linear duration-300 hover:border-b-black hover:border-b-2">JOIN
                     US</button>
+                </a>
             </div>
         </div>
     </div>
