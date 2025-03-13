@@ -38,6 +38,8 @@ class PaymentController extends Controller
             'total_price' => $totalPrice,
         ]);
 
+        // dd(Session::get('payment'));
+
         $ticket = Ticket::create([
             'event_id' => $checkout['event_id'],
             'user_id' => auth()->user()->id,
@@ -62,8 +64,6 @@ class PaymentController extends Controller
         if (!$payment) {
             return redirect()->route('events')->with('error', 'No payment data found.');
         }
-
-        Session::flush();
 
         return view('livewire.pages.events.detail.payment-confirmation', compact('payment'));
     }

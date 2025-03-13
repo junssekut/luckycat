@@ -52,3 +52,13 @@ Route::get('/logout',[TopBar::class,'logout'])->name('logout');
 // });
 
 // require __DIR__.'/auth.php';
+use Illuminate\Support\Facades\Mail;
+
+Route::get('/test-email', function () {
+    Mail::raw('This is a test email', function ($message) {
+        $message->to('arzunadio@gmail.com')
+                ->subject('Test Email');
+    });
+
+    return 'Email sent!';
+});
