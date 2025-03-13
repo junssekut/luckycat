@@ -19,6 +19,8 @@
         <livewire:footer />
         <livewire:copyright />
     @endpersist
+
+    <x-toaster-hub />
 </body>
     {{-- <script>
         window.addEventListener("popstate", function (event) { window.location.reload(); });

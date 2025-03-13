@@ -1,5 +1,8 @@
 <x-layouts.app>
-    <div class="flex flex-col w-full h-screen">
+    <livewire:banner-list reverse="true" />
+    <livewire:pages.events.events />
+
+    {{-- <div class="flex flex-col w-full h-screen">
         <div class="grid grid-cols-1 sm:grid-cols-3 sm:border-r-1 sm:border-r-black">
             <a href="%PLACEHOLDER PLS EDIT LATER"
                 class="group border-b-1 border-b-black border-r-1 border-r-black w-full sm:h-[400px]">
@@ -76,5 +79,5 @@
             </a>
         </div>
 
-    </div>
+    </div> --}}
 </x-layouts.app>

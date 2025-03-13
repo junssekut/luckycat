@@ -13,4 +13,8 @@ class Benefit extends Model
     {
         return $this->BelongsTo(Ticket::class);
     }
+    public function event(): BelongsTo
+    {
+        return $this->BelongsTo(Event::class);
+    }
 }

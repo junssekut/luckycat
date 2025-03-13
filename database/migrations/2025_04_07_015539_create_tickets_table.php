@@ -17,8 +17,7 @@ return new class extends Migration
             $table->foreign('event_id')->references('id')->on('events')->onDelete('no action');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('no action');
-            $table->string('seat_category');
-            $table->string('price');
+            $table->integer('price');
             $table->timestamps();
         });
     }

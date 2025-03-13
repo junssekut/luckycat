@@ -5,7 +5,8 @@
         --width: 250px;
         --height: 30px;
         --quantity: 10;
-    ">
+    "
+                reverse="{{ $reverse }}">
                 <div class="list">
                     <div class="item flex justify-center items-center w-full h-full absolute inset-0"
                         style="--position: 1">

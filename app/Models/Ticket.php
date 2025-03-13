@@ -9,8 +9,8 @@ class Ticket extends Model
 {
     protected $guarded=['id'];
 
-    public function benefits(): HasMany
+    public function ticketBenefits(): HasMany
     {
-        return $this->HasMany(Benefit::class);
+        return $this->HasMany(TicketBenefit::class);
     }
 }
