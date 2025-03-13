@@ -14,7 +14,8 @@ use Filament\Models\Contracts\FilamentUser;
 // Declare Eloquent Relationships
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable implements FilamentUser 
+{
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
@@ -27,7 +28,8 @@ class User extends Authenticatable implements FilamentUser
         'name',
         'email',
         'password',
-        'role'
+        'role',
+        'profile_photo_path'
     ];
 
     /**

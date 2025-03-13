@@ -5,7 +5,7 @@
     </div>
 
     <!-- Bagian Kanan: Form -->
-    <div class="flex flex-col justify-center items-center w-full md:w-1/2 bg-luckycat-300 dark:bg-gray-800 p-6 font-Geomisans">
+    <div class="flex flex-col justify-center items-center w-full md:w-1/2 bg-luckycat-300 dark:bg-gray-800 p-6 font-Geomisans h-screen">
         <div class="w-full max-w-md dark:bg-gray-700 p-8 border-2 border-black bg-white">
             @if (session()->has('success'))
                 <div role="alert" class="alert alert-success rounded-[0]">

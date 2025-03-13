@@ -12,6 +12,10 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\Wizard;
+use Illuminate\Support\HtmlString;
+use Illuminate\Support\Facades\Blade;
+
 
 class EventResource extends Resource
 {
@@ -21,21 +25,26 @@ class EventResource extends Resource
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema([
-                Forms\Components\TextInput::make('vendor_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('title')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('description')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('price')
-                    ->required()
-                    ->numeric()
-                    ->prefix('$'),
+        return Wizard::make([
+            Wizard\Step::make('Order')
+                ->schema([
+                    // ...
+                ]),
+            Wizard\Step::make('Delivery')
+                ->schema([
+                    // ...
+                ]),
+            Wizard\Step::make('Billing')
+                ->schema([
+                    // ...
+                ])->submitAction(new HtmlString(Blade::render(<<<BLADE
+                <x-filament::button
+                    type="submit"
+                    size="sm"
+                >
+                    Submit
+                </x-filament::button>
+            BLADE))),
             ]);
     }
 
