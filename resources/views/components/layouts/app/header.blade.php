@@ -20,5 +20,7 @@
         <livewire:copyright />
     @endpersist
 </body>
-
+    {{-- <script>
+        window.addEventListener("popstate", function (event) { window.location.reload(); });
+    </script> --}}
 </html>

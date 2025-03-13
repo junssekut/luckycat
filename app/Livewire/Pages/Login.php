@@ -10,10 +10,7 @@ class Login extends Component
     public $password;
     
     public function render()
-    {
-        if (auth()->check()) {
-            return redirect('/profile',navigate: true);
-        }   
+    { 
         return view('livewire.pages.login');
     }
 

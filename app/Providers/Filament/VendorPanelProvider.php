@@ -54,8 +54,8 @@ class VendorPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
-            // ->theme(asset('css\filament\theme.css'));
+            ])
+            ->theme(asset('css/filament/vendor/theme.css'));
             
     }
 }

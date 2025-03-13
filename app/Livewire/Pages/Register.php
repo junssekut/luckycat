@@ -14,9 +14,6 @@ class Register extends Component
 
     public function render()
     {
-        if (auth()->check()) {
-            return redirect()->to('/home');
-        }
         return view('livewire.pages.register');
     }
 
