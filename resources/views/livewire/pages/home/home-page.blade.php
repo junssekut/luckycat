@@ -4,5 +4,5 @@
     <livewire:banner-list />
     <livewire:pages.home.about-us />
     <livewire:pages.home.information />
-    <livewire:pages.home.contact-us />
+    <livewire:pages.contact.contact-us />
 </x-layouts.app>

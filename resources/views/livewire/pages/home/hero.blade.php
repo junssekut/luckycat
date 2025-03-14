@@ -1,9 +1,9 @@
 <div class="w-full flex flex-col ">
     <div class="md:h-[784px] flex">
         <div class="hidden lg:block relative border-r-black border-r-2">
-            <img class="w-[628px] h-full object-cover" src="{{ asset('assets/images/baskara-putra.png') }}" alt="">
+            <img class="w-[628px] h-full object-cover" src="{{ $upcomingEvent->thumbnail }}" alt="">
 
-            <a href="#"
+            <a href="{{ route('events.show', $upcomingEvent->id) }}"
                 class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-black shadow-md group">
                 <span
                     class="flex absolute inset-0 items-center justify-center w-full h-full text-black duration-300 -translate-x-full bg-white group-hover:translate-x-0 ease">
@@ -16,8 +16,8 @@
                 </span>
                 <span
                     class="absolute flex items-center justify-center w-full h-full text-black transition-all duration-300 transform group-hover:translate-x-full ease font-Geomisans font-bold p-0 bg-luckycat-300 md:pt-4 md:py-2 md:px-4 text-sm md:text-lg">UPCOMING
-                    EVENT - HINDIA</span>
-                <span class="relative invisible">UPCOMING EVENT - HINDIA</span>
+                    EVENT - {{ $upcomingEvent->title }}</span>
+                <span class="relative invisible">UPCOMING EVENT - {{ $upcomingEvent->title }}</span>
             </a>
         </div>
 
@@ -25,10 +25,11 @@
             style="background-image: url('{{ asset('assets/images/4.png') }}');">
 
             <div class="flex flex-col justify-end h-full p-12 pb-32 gap-12">
-                <button
-                    class="bg-white text-black font-bold pt-2 py-0 px-4 font-Geomisans border-1 border-black hover:bg-black hover:text-white hover:border-white cursor-pointer ease-linear duration-300 w-fit">—
-                    MARCH 2025
-                </button>
+                <div
+                    class="bg-white text-black font-bold pt-2 py-0 px-4 font-Geomisans border-1 border-black hover:bg-black hover:text-white hover:border-white ease-linear duration-300 w-fit uppercase">
+                    —
+                    {{ now()->monthName }} {{ now()->year }}
+                </div>
 
                 <div
                     class="flex flex-col items-start justify-center text-start text-white w-full tracking-wider drop-shadow-lg">

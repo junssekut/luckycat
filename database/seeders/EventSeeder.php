@@ -104,6 +104,39 @@ class EventSeeder extends Seeder
                     ['benefit' => 'Signed merchandise', 'description' => 'Receive exclusive signed merchandise from the artists.', 'price' => '50000'],
                 ]
             ],
+            [
+                'vendor_id' => $synchronizefestId,
+                'title' => 'We The Fest',
+                'description' => 'Join us at We The Fest for a spectacular lineup of international and local artists. Enjoy an amazing festival atmosphere.',
+                'price' => 400000,
+                'thumbnail' => Storage::url('events/we-the-fest.jpg'),
+                'benefits' => [
+                    ['benefit' => 'VIP access', 'description' => 'Get access to VIP areas with exclusive amenities.', 'price' => '150000'],
+                    ['benefit' => 'Exclusive merchandise', 'description' => 'Receive exclusive festival merchandise.', 'price' => '50000'],
+                ]
+            ],
+            [
+                'vendor_id' => $holafestId,
+                'title' => 'Java Jazz Festival',
+                'description' => 'Experience the best of jazz music at the Java Jazz Festival. Enjoy performances by top jazz artists from around the world.',
+                'price' => 300000,
+                'thumbnail' => Storage::url('events/java-jazz.jpeg'),
+                'benefits' => [
+                    ['benefit' => 'Meet the artists', 'description' => 'Get a chance to meet the jazz artists.', 'price' => '100000'],
+                    ['benefit' => 'VIP seating', 'description' => 'Enjoy the best seats in the house.', 'price' => '200000'],
+                ]
+            ],
+            [
+                'vendor_id' => $pestaporaId,
+                'title' => 'Djakarta Warehouse Project',
+                'description' => 'Dance the night away at the Djakarta Warehouse Project with an electrifying lineup of DJs and electronic music artists.',
+                'price' => 500000,
+                'thumbnail' => Storage::url('events/dwp.jpg'),
+                'benefits' => [
+                    ['benefit' => 'Backstage pass', 'description' => 'Get backstage access and meet the DJs.', 'price' => '250000'],
+                    ['benefit' => 'Exclusive lounge access', 'description' => 'Access the exclusive lounge with premium amenities.', 'price' => '200000'],
+                ]
+            ],
         ];
 
         foreach ($events as $eventData) {

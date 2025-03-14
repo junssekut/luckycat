@@ -7,13 +7,15 @@
 
         <div class="grid grid-cols-1 p-4 border-r-1 border-r-black">
 
-            <div class="flex flex-row p-4 gap-4">
+            <div class="flex flex-row p-4 gap-4 group">
                 <p
-                    class="border border-gray-400 rounded-full text-gray-400 p-4 w-10 h-10 flex justify-center items-center">
+                    class="border border-gray-400 rounded-full text-gray-400 p-4 w-10 h-10 flex justify-center items-center group-hover:border-luckycat-500 group-hover:text-luckycat-500 duration-300 ease-linear">
                     1
                 </p>
                 <div class="flex flex-col gap-2 px-2 py-2">
-                    <h2 class="text-black font-Geomisans text-3xl">VISION</h2>
+                    <h2
+                        class="text-black font-Geomisans text-3xl group-hover:text-luckycat-500 duration-300 ease-linear">
+                        VISION</h2>
                     <p class="text-black font-Geomisans">
                         At LuckyCat, our vision is to revolutionize the e-ticketing landscape in Indonesia by
                         providing
@@ -32,13 +34,15 @@
 
             <div class="divider"></div>
 
-            <div class="flex flex-row p-4 gap-4">
+            <div class="flex flex-row p-4 gap-4 group">
                 <p
-                    class="border border-gray-400 rounded-full text-gray-400 p-4 w-10 h-10 flex justify-center items-center">
+                    class="border border-gray-400 rounded-full text-gray-400 p-4 w-10 h-10 flex justify-center items-center group-hover:border-luckycat-500 group-hover:text-luckycat-500 duration-300 ease-linear">
                     2
                 </p>
                 <div class="flex flex-col gap-2 px-2 py-2">
-                    <h2 class="text-black font-Geomisans text-3xl">INNOVATION</h2>
+                    <h2
+                        class="text-black font-Geomisans text-3xl group-hover:text-luckycat-500 duration-300 ease-linear">
+                        INNOVATION</h2>
                     <p class="text-black font-Geomisans">
                         Innovation is at the core of LuckyCat. We leverage cutting-edge technology to deliver a
                         user-friendly, secure, and efficient ticketing experience. Our platform is designed to cater
@@ -55,13 +59,15 @@
 
             <div class="divider"></div>
 
-            <div class="flex flex-row p-4 gap-4">
+            <div class="flex flex-row p-4 gap-4 group">
                 <p
-                    class="border border-gray-400 rounded-full text-gray-400 p-4 w-10 h-10 flex justify-center items-center">
+                    class="border border-gray-400 rounded-full text-gray-400 p-4 w-10 h-10 flex justify-center items-center group-hover:border-luckycat-500 group-hover:text-luckycat-500 duration-300 ease-linear">
                     3
                 </p>
                 <div class="flex flex-col gap-2 px-2 py-2">
-                    <h2 class="text-black font-Geomisans text-3xl">CONNECTION</h2>
+                    <h2
+                        class="text-black font-Geomisans text-3xl group-hover:text-luckycat-500 duration-300 ease-linear">
+                        CONNECTION</h2>
                     <p class="text-black font-Geomisans">
                         Connection is the heartbeat of LuckyCat. We believe in the power of music to bring people
                         together,
@@ -81,7 +87,6 @@
 
         </div>
     </div>
-
     <div class="bg-luckycat-300 border border-black group">
         <a href="#information"
             class="flex flex-row justify-between font-TGS px-8 py-2 text-black tracking-widest group-hover:bg-luckycat-500 group-hover:text-white duration-300 ease-linear">

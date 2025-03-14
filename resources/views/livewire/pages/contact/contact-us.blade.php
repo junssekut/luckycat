@@ -5,7 +5,7 @@
         <div class="hidden xl:block relative border-r-black border-r-1 group">
             <img class="w-full object-cover" src="{{ asset('assets/images/contact-us-2.png') }}" alt="">
 
-            <a href="#_"
+            <a href="{{ route('contact') }}"
                 class="absolute top-3/5 left-1/3 transform -translate-x-1/5 -translate-y-1/6 inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2  border-black shadow-md group">
                 <span
                     class="absolute inset-0 flex items-center justify-center w-full h-full text-black duration-300 -translate-x-full bg-white group-hover:translate-x-0 ease">
@@ -39,13 +39,19 @@
 
             <fieldset class="fieldset w-xs">
                 {{-- <legend class="fieldset-legend">Settings</legend> --}}
-                <div class="join">
-                    <input type="text"
-                        class="input join-item font-Geomisans border-black rounded-none text-md pt-2 focus:ring-0 focus:outline-0"
-                        placeholder="YOUR EMAIL" />
-                    <button
-                        class="btn join-item border-black bg-black text-white font-Geomisans pt-2 rounded-none px-4 hover:bg-luckycat-300 hover:text-black duration-300 ease-in-out transition">SUBSCRIBE</button>
-                </div>
+
+                <form wire:submit.prevent="subscribe">
+                    <div class="join">
+                        <input type="email" wire:model="email"
+                            class="input join-item font-Geomisans border-black rounded-none text-md pt-2 focus:ring-0 focus:outline-0"
+                            placeholder="YOUR EMAIL" required />
+                        <button type="submit"
+                            class="btn join-item border-black bg-black text-white font-Geomisans pt-2 rounded-none px-4 hover:bg-luckycat-300 hover:text-black duration-300 ease-in-out transition">SUBSCRIBE</button>
+                    </div>
+                </form>
+                @error('email')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
             </fieldset>
 
         </div>

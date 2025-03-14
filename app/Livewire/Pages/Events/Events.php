@@ -11,6 +11,7 @@ class Events extends Component
 {
     use WithPagination;
 
+    
 
     public function render()
     {
