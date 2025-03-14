@@ -12,10 +12,6 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Forms\Components\Wizard;
-use Illuminate\Support\HtmlString;
-use Illuminate\Support\Facades\Blade;
-
 
 class EventResource extends Resource
 {
@@ -25,34 +21,93 @@ class EventResource extends Resource
 
     public static function form(Form $form): Form
     {
-        return Wizard::make([
-            Wizard\Step::make('Order')
-                ->schema([
-                    // ...
+        return $form
+            ->columns(1)
+            ->schema([
+                Forms\Components\Wizard::make([
+                    Forms\Components\Wizard\Step::make('Event Details')
+                        ->columns(2)
+                        ->description('Enter the details of the event.')
+                        ->schema([
+                            Forms\Components\Hidden::make('vendor_id')
+                                ->default(auth()->user()->id),
+                            Forms\Components\TextInput::make('title')
+                                ->label('Event Title')
+                                ->placeholder('Title')
+                                ->required()
+                                ->maxLength(255)
+                                ->autofocus()
+                                ->columnSpanFull()
+                                ->prefixIcon('heroicon-o-ticket')
+                                ->prefixIconColor('luckycat'),
+                            Forms\Components\TextArea::make('description')
+                                ->label('Event Description')
+                                ->placeholder('Description')
+                                ->required()
+                                ->maxLength(255)
+                                ->autosize()
+                                ->columnSpanFull(),
+                            Forms\Components\TextInput::make('price')
+                                ->required()
+                                ->numeric()
+                                ->prefixIcon('heroicon-o-currency-dollar')
+                                ->prefixIconColor('luckycat')
+                                ->minValue(1)
+                                ->columnSpan(1),
+                            Forms\Components\FileUpload::make('thumbnail')
+                                ->required()
+                                ->columnSpan(1)
+                                ->disk('public')
+                                ->directory('event')
+                                ->acceptedFileTypes(['image/*'])
+                                ->image()
+                                ->imageEditor()
+                                ->imageEditorAspectRatios([
+                                    '16:9',
+                                    '4:3',
+                                    '1:1',
+                                ])
+                                ->uploadingMessage('Uploading thumbnail...'),
+                        ]),
+                    Forms\Components\Wizard\Step::make('Event Benefits')
+                        ->description('Enter the benefits of the event.')
+                        ->schema([
+                            Forms\Components\Repeater::make('benefits')
+                                ->relationship('benefits') // Make sure you have a benefits relationship in your Event model
+                                ->columns(3)
+                                ->schema([
+                                    Forms\Components\TextInput::make('benefit')
+                                        ->required()
+                                        ->maxLength(255)
+                                        ->prefixIcon('heroicon-o-sparkles')
+                                        ->prefixIconColor('luckycat')
+                                        ->autofocus(),
+                                    Forms\Components\TextInput::make('description')
+                                        ->required()
+                                        ->maxLength(255)
+                                        ->prefixIcon('heroicon-o-pencil-square')
+                                        ->prefixIconColor('luckycat'),
+                                    Forms\Components\TextInput::make('price')
+                                        ->required()
+                                        ->numeric()
+                                        ->prefixIcon('heroicon-o-currency-dollar')
+                                        ->prefixIconColor('luckycat'),
+                                ])
+                                ->defaultItems(1)
+                                ->createItemButtonLabel('Add Benefit')
+                                ->collapsible(),
+                        ]),
                 ]),
-            Wizard\Step::make('Delivery')
-                ->schema([
-                    // ...
-                ]),
-            Wizard\Step::make('Billing')
-                ->schema([
-                    // ...
-                ])->submitAction(new HtmlString(Blade::render(<<<BLADE
-                <x-filament::button
-                    type="submit"
-                    size="sm"
-                >
-                    Submit
-                </x-filament::button>
-            BLADE))),
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
+            ->query(Event::query()
+                ->where('vendor_id', auth()->user()->id))
             ->columns([
-                Tables\Columns\TextColumn::make('vendor_id')
+                Tables\Columns\TextColumn::make('vendor.name')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('title')
@@ -62,6 +117,8 @@ class EventResource extends Resource
                 Tables\Columns\TextColumn::make('price')
                     ->money()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('thumbnail')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

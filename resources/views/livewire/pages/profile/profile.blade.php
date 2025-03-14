@@ -7,7 +7,7 @@
             <div class="border border-black rounded-none p-6 shadow-lg">
                 <h2 class="text-2xl font-bold mb-4">Welcome,</h2>
                 <div class="flex items-center space-x-4 mb-6">
-                    <img src="{{ Storage::url($user->avatar) }}" alt="{{ $user->avatar }}"
+                    <img src="{{ $profile }}" alt="{{ $user->avatar }}"
                         class="w-24 h-24 rounded-none border border-black">
                     <div>
                         <h3 class="text-xl font-bold">{{ $user->name ?? 'Nama Pengguna' }}</h3>

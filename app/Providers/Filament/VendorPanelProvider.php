@@ -17,9 +17,18 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Filament\FontProviders\LocalFontProvider;
+
+use Filament\Support\Facades\FilamentColor;
 
 class VendorPanelProvider extends PanelProvider
 {
+    public function boot() {
+        FilamentColor::register([
+            'luckycat' => Color::hex('#01c447'),
+        ]);
+    }
+
     public function panel(Panel $panel): Panel
     {
         return $panel
@@ -28,13 +37,22 @@ class VendorPanelProvider extends PanelProvider
             ->path('vendor')
             ->login()
             ->brandLogo(asset('assets/images/luckycat-logo.png'))
+            ->favicon(asset('assets/images/luckycat-letter.png'))
             ->colors([
-                'primary' => Color::Green,
+                'primary' => '#01c447',
             ])
+
+            ->font('Mnbook',
+                url: url('fonts/Maison_Neue_Book.ttf'), // Correct the path here
+                provider: LocalFontProvider::class)
+            ->darkMode(false)
+            ->brandName('luckycat')
+            ->breadcrumbs(false)
+
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
-                Pages\Dashboard::class,
+                // Pages\Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
@@ -56,6 +74,7 @@ class VendorPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->theme(asset('css/filament/vendor/theme.css'));
+            // ->viteTheme(asset('css/filament/vendor/theme.css'));
             
     }
 }
