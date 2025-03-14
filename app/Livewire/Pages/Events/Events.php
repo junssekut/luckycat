@@ -10,8 +10,10 @@ use App\Models\Event;
 class Events extends Component
 {
     use WithPagination;
-
-    
+    public function paginationView()
+    {
+        return 'vendor.livewire.tailwind';
+    }
 
     public function render()
     {

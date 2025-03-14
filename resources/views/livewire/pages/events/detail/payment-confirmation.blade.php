@@ -35,7 +35,7 @@
             <div class="grid grid-cols-2 gap-0 w-fit">
                 <h2 class="text-lg uppercase text-black bg-white pt-2 px-4 w-fit border border-black">
                     ADDONS PRICE <span
-                        class="text-luckycat-500 text-sm">({{ $payment['benefits']->count() > 0 ? ' + ' . $payment['benefits']->count() . ' ADDON' : '' }})</span>
+                        class="text-luckycat-500 text-sm">{{ $payment['benefits']->count() > 0 ? '(+ ' . $payment['benefits']->count() . ' ADDON)' : '' }})</span>
                 </h2>
                 <h2 class="text-lg uppercase text-white bg-black pt-2 px-4 w-fit">
                     RP{{ number_format($payment['benefits']->sum('price'), 0, ',', '.') }}
@@ -61,9 +61,9 @@
                 </h2>
             </div>
 
-            <a href="{{ route('events.show', $payment['checkout']['event']['id']) }}"
+            <a href="{{ asset('storage/tickets/' . $payment['ticket']->id . '.pdf') }}"
                 class="bg-luckycat-300 border border-black text-black pt-4 py-2 px-4 hover:bg-luckycat-500 hover:text-white text-bold tracking-widest text-lg duration-300 ease-linear cursor-pointer text-center">
-                Back to Event
+                Download E-ticket
             </a>
         </div>
     </div>

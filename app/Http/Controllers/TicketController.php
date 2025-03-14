@@ -34,9 +34,10 @@ class TicketController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Ticket $ticket)
+    public function show($id)
     {
-        //
+        $ticket = Ticket::with('event.vendor', 'user', 'ticketBenefits')->findOrFail($id);
+        return view('livewire.pages.ticket.ticket', compact('ticket'));
     }
 
     /**

@@ -10,6 +10,7 @@
         @endforeach
     </div>
     <div class="mt-4">
-        {{ $events->links('vendor.livewire.tailwind') }}
+        {{-- {{ $events->links('vendor.livewire.tailwind') }} --}}
+        {{ $events->links(data: ['scrollTo' => false]) }}
     </div>
 </div>

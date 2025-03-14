@@ -9,6 +9,9 @@ use App\Models\TicketBenefit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Masmerise\Toaster\Toaster;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
+use Illuminate\Support\Facades\Storage;
+use Mail;
 
 class PaymentController extends Controller
 {
@@ -30,20 +33,22 @@ class PaymentController extends Controller
         $benefits = Benefit::whereIn('id', $benefitIds)->get();
         $benefitTotalPrice = $benefits->sum('price');
         $totalPrice = $checkout['total_price'] + $benefitTotalPrice;
+        $event = $checkout['event'];
+        $total_price = $totalPrice;
+        $payment_method = $paymentMethod;
+
+        $ticket = Ticket::create([
+            'event_id' => $checkout['event_id'],
+            'user_id' => auth()->user()->id,
+            'price' => $totalPrice,
+        ]);
 
         Session::put('payment', [
             'checkout' => $checkout,
             'payment_method' => $paymentMethod,
             'benefits' => $benefits,
             'total_price' => $totalPrice,
-        ]);
-
-        // dd(Session::get('payment'));
-
-        $ticket = Ticket::create([
-            'event_id' => $checkout['event_id'],
-            'user_id' => auth()->user()->id,
-            'price' => $totalPrice,
+            'ticket' => $ticket
         ]);
 
         foreach ($benefits as $benefit) {
@@ -52,7 +57,31 @@ class PaymentController extends Controller
                 'benefit_id' => $benefit->id,
                 'price' => $benefit->price,
             ]);
-        }
+        } 
+        
+        // Generate PDF
+        // $pdf = PDF::loadView('pdf.ticket', compact('event', 'checkout', 'total_price', 'benefits', 'payment_method'));
+        // $pdfPath = storage_path('app/public/tickets/' . $ticket->id . '.pdf');
+        // $pdf->save($pdfPath);
+
+        // Generate PDF
+        $pdf = PDF::loadView('pdf.ticket', compact('event', 'checkout', 'total_price', 'benefits', 'payment_method'));
+        $pdfContent = $pdf->output();
+        $pdfPath = 'tickets/' . $ticket->id . '.pdf';
+        Storage::disk('public')->put($pdfPath, $pdfContent);
+
+        // Send email
+        // Mail::send('emails.ticket', compact('total_price', 'checkout'), function ($message) use ($pdfPath) {
+        //     $message->to(auth()->user()->email)
+        //             ->subject('Your E-ticket')
+        //             ->attach($pdfPath);
+        // });
+
+        Mail::send('pdf.email', compact('event', 'checkout', 'total_price', 'benefits', 'payment_method', 'ticket'), function ($message) use ($pdfPath, $ticket) {
+            $message->to(auth()->user()->email)
+                    ->subject('Your E-ticket #' . $ticket->id . ' has been published!')
+                    ->attach(storage_path('app/public/' . $pdfPath));
+        });
 
         return redirect()->route('payment.confirmation');
     }
