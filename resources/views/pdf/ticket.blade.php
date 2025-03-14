@@ -1,257 +1,208 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>E-ticket</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket</title>
     <style>
-        // Variables
-        $background-color: Thistle;
-        $width: 400;
-        $circle-size: 50;
-
-        body {
-            background-color: $background-color;
-            font-family: 'Yanone Kaffeesatz', sans-serif;
-            font-weight: 600;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .ticket {
-            width: $width + px;
-            height: 775px;
-            background-color: white;
-            margin: 25px auto;
-            position: relative;
-        }
-
-        .holes-top {
-            height: $circle-size + px;
-            width: $circle-size + px;
-            background-color: $background-color;
-            border-radius: 50%;
-            position: absolute;
-            left: 50%;
-            margin-left: ($circle-size / -2) + px;
-            top: ($circle-size / -2) + px;
-
-            &:before,
-            &:after {
-                content: '';
-                height: $circle-size + px;
-                width: $circle-size + px;
-                background-color: $background-color;
-                position: absolute;
-                border-radius: 50%;
-            }
-
-            &:before {
-                left: ($width / -2) + px;
-            }
-
-            &:after {
-                left: ($width / 2) + px;
-            }
-        }
-
-        .holes-lower {
-            position: relative;
-            margin: 25px;
-            border: 1px dashed #aaa;
-
-            &:before,
-            &:after {
-                content: '';
-                height: $circle-size + px;
-                width: $circle-size + px;
-                background-color: $background-color;
-                position: absolute;
-                border-radius: 50%;
-            }
-
-            &:before {
-                top: -25px;
-                left: ($circle-size / -1) + px;
-            }
-
-            &:after {
-                top: -25px;
-                left: ($width - $circle-size) + px;
-            }
-        }
-
-        .title {
-            padding: 50px 25px 10px;
-        }
-
-        .cinema {
-            color: #aaa;
-            font-size: 22px;
-        }
-
-        .movie-title {
-            font-size: 50px;
-        }
-
-        .info {
-            padding: 15px 25px;
-        }
-
-        table {
+        .ticket-container {
+            max-width: 28rem;
             width: 100%;
-            font-size: 18px;
-            margin-bottom: 15px;
-
-            tr {
-                margin-bottom: 10px;
-            }
-
-            th {
-                text-align: left;
-
-                &:nth-of-type(1) {
-                    width: 38%;
-                }
-
-                &:nth-of-type(2) {
-                    width: 40%;
-                }
-
-                &:nth-of-type(3) {
-                    width: 15%;
-                }
-            }
-
-            td {
-                width: 33%;
-                font-size: 32px;
-            }
+            margin: 0 auto;
+            background-color: #e0f2f1;
+            font-family: 'Geomisans', sans-serif;
+            text-transform: uppercase;
         }
 
-        .bigger {
-            font-size: 48px;
+        .ticket-wrapper {
+            display: flex;
+            flex-direction: column;
         }
 
-        .serial {
-            padding: 25px;
-
-            table {
-                border-collapse: collapse;
-                margin: 0 auto;
-            }
-
-            td {
-                width: 3px;
-                height: 50px;
-            }
+        .ticket-content {
+            background-color: white;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            color: black;
+            padding: 1rem;
+            margin: 1rem;
         }
 
-        .numbers {
-            td {
-                font-size: 16px;
-                text-align: center;
-            }
+        .ticket-header {
+            display: flex;
+        }
+
+        .ticket-thumb {
+            position: relative;
+            height: 8rem;
+            width: 8rem;
+            margin-bottom: 0.75rem;
+            display: none;
+            /* initially hidden */
+        }
+
+        .thumb-img {
+            width: 8rem;
+            height: 8rem;
+            object-fit: cover;
+        }
+
+        .edit-icon {
+            position: absolute;
+            right: -0.5rem;
+            bottom: -0.5rem;
+            margin-left: -0.75rem;
+            color: white;
+            padding: 0.25rem;
+            font-size: 0.75rem;
+            background-color: #68d391;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            border-radius: 9999px;
+            transition: background-color 0.3s ease-in;
+        }
+
+        .edit-icon:hover {
+            background-color: #48bb78;
+        }
+
+        .edit-icon-svg {
+            height: 1rem;
+            width: 1rem;
+        }
+
+        .ticket-info {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+
+        .ticket-info-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .ticket-logo {
+            display: flex;
+            align-items: center;
+            margin: 0.25rem 0;
+        }
+
+        .logo-img-wrapper {
+            margin-right: 0.75rem;
+            background-color: white;
+            height: 2rem;
+            border-radius: 9999px;
+        }
+
+        .logo-img {
+            height: 2rem;
+            object-fit: contain;
+        }
+
+        .ticket-type {
+            color: #10b981;
+            margin-left: auto;
+        }
+
+        .ticket-divider {
+            border-bottom: 2px dashed black;
+            margin: 1.25rem 0;
+        }
+
+        .ticket-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-title {
+            font-size: 1.125rem;
+        }
+
+        .event-vendor,
+        .event-date {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .ticket-divider-bottom {
+            position: relative;
+            border-bottom: 2px dashed black;
+            margin: 1.25rem 0;
+            padding-top: 1.25rem;
+        }
+
+        .divider-circle {
+            position: absolute;
+            width: 1.25rem;
+            height: 1.25rem;
+            background-color: #e0f2f1;
+            border-radius: 9999px;
+            margin-top: -0.5rem;
+        }
+
+        .left-circle {
+            left: -0.5rem;
+        }
+
+        .right-circle {
+            right: -0.5rem;
         }
     </style>
 </head>
 
 <body>
-    <!--
-Inspired by: https://dribbble.com/shots/1166639-Movie-Ticket/attachments/152161
--->
-
-    <div class="ticket">
-        <div class="holes-top"></div>
-        <div class="title">
-            <p class="cinema">{{ $event['title'] }}</p>
-            <p class="movie-title">{{ $event['vendor']['name'] }}</p>
-        </div>
-        <div class="poster">
-            <img src="{{ $event['thumbnail'] }}" alt="{{ $event['title'] }}" />
-        </div>
-        <div class="info">
-            <table>
-                <tr>
-                    <th>SCREEN</th>
-                    <th>ROW</th>
-                    <th>SEAT</th>
-                </tr>
-                <tr>
-                    <td class="bigger">18</td>
-                    <td class="bigger">H</td>
-                    <td class="bigger">24</td>
-                </tr>
-            </table>
-            <table>
-                <tr>
-                    <th>PRICE</th>
-                    <th>DATE</th>
-                    <th>TIME</th>
-                </tr>
-                <tr>
-                    <td>$12.00</td>
-                    <td>1/13/17</td>
-                    <td>19:30</td>
-                </tr>
-            </table>
-        </div>
-        <div class="holes-lower"></div>
-        <div class="serial">
-            <table class="barcode">
-                <tr></tr>
-            </table>
-            <table class="numbers">
-                <tr>
-                    <td>9</td>
-                    <td>1</td>
-                    <td>7</td>
-                    <td>3</td>
-                    <td>7</td>
-                    <td>5</td>
-                    <td>4</td>
-                    <td>4</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>4</td>
-                    <td>1</td>
-                    <td>4</td>
-                    <td>7</td>
-                    <td>8</td>
-                    <td>7</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>1</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>2</td>
-                </tr>
-            </table>
+    <div class="ticket-container">
+        <div class="ticket-wrapper">
+            <div class="ticket-content">
+                <div class="ticket-header">
+                    <div class="ticket-thumb hidden">
+                        <img src="{{ $ticket->event->thumbnail }}" alt="aji" class="thumb-img">
+                        <a href="#" class="edit-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                class="edit-icon-svg">
+                                <path
+                                    d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="ticket-info">
+                        <div class="ticket-info-header">
+                            <div class="ticket-logo">
+                                <span class="logo-img-wrapper">
+                                    <img src="{{ asset('assets/images/luckycat-logo.png') }}" alt="luckycat"
+                                        class="logo-img">
+                                </span>
+                            </div>
+                            <div class="ticket-type">E-Ticket</div>
+                        </div>
+                        <div class="ticket-divider"></div>
+                        <div class="ticket-details">
+                            <p class="event-title">{{ $ticket->event->title }}</p>
+                            <p class="event-vendor">@ {{ $ticket->event->vendor->name }}</p>
+                            <p>{{ $ticket->created_at }}</p>
+                            @if ($ticket->ticketBenefits->isNotEmpty())
+                                <p>Benefits:</p>
+                                <ul>
+                                    @foreach ($ticket->ticketBenefits as $benefit)
+                                        <li>- {{ $benefit->benefit->benefit }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="ticket-divider-bottom">
+                        <div class="divider-circle left-circle"></div>
+                        <div class="divider-circle right-circle"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    {{-- <div class="ticket-container">
-        <div class="ticket">
-            <div class="ticket-header">
-                <h1>{{ $event['title'] }}</h1>
-            </div>
-            <div class="ticket-details">
-                <p><strong>Event:</strong> {{ $event['title'] }}</p>
-                <p><strong>Date:</strong> {{ $event['created_at'] }}</p>
-                <p><strong>Venue:</strong> {{ $event['vendor']['name'] }}</p>
-                <p><strong>Quantity:</strong> {{ $checkout['quantity'] }}</p>
-                <p><strong>Ticket Price:</strong> RP{{ number_format($checkout['total_price'], 0, ',', '.') }}</p>
-                <p><strong>Addons Price:</strong> RP{{ number_format($benefits->sum('price'), 0, ',', '.') }}</p>
-                <p><strong>Total Price:</strong> RP{{ number_format($totalPrice, 0, ',', '.') }}</p>
-                <p><strong>Payment Method:</strong> {{ $paymentMethod }}</p>
-            </div>
-            <div class="ticket-footer">
-                <p class="status">Payment Successful</p>
-                <p>Thank you for your purchase!</p>
-            </div>
-        </div>
-    </div> --}}
 </body>
 
 </html>

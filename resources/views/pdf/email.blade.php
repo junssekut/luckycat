@@ -73,7 +73,6 @@
             </div>
             <div class="ticket-details">
                 <p><strong>Event:</strong> {{ $event['title'] }}</p>
-                <p><strong>Date:</strong> {{ $event['created_at'] }}</p>
                 <p><strong>Venue:</strong> {{ $event['vendor']['name'] }}</p>
                 <p><strong>Quantity:</strong> {{ $checkout['quantity'] }}</p>
                 <p><strong>Ticket Price:</strong> RP{{ number_format($checkout['total_price'], 0, ',', '.') }}</p>

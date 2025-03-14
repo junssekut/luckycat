@@ -39,7 +39,7 @@
 
 
             <div>
-                @if (Auth::check())
+                @if (auth()->user())
                     <div class="hidden md:flex flex-row h-16">
                         <a href="{{ route('profile') }}" wire:navigate wire:scroll>
                             <button

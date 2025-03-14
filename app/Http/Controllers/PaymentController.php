@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Session;
 use Masmerise\Toaster\Toaster;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Illuminate\Support\Facades\Storage;
-use Mail;
+use Illuminate\Support\Facades\Mail;
 
 class PaymentController extends Controller
 {
@@ -65,7 +65,7 @@ class PaymentController extends Controller
         // $pdf->save($pdfPath);
 
         // Generate PDF
-        $pdf = PDF::loadView('pdf.ticket', compact('event', 'checkout', 'total_price', 'benefits', 'payment_method'));
+        $pdf = PDF::loadView('pdf.ticket', compact('event', 'checkout', 'total_price', 'benefits', 'payment_method', 'ticket'));
         $pdfContent = $pdf->output();
         $pdfPath = 'tickets/' . $ticket->id . '.pdf';
         Storage::disk('public')->put($pdfPath, $pdfContent);
