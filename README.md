@@ -54,7 +54,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://luckycatc.cloud)
+[![Product Name Screen Shot][product-screenshot]](https://luckycat.cloud)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -139,7 +139,7 @@ Project Link: [https://github.com/junssekut/luckycat](https://github.com/junssek
 [license-url]: https://github.com/junssekut/luckycat/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/arjuna-andio-08b958297
-[product-screenshot]: public/assets/images/demo.png
+[product-screenshot]: https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2pxZ3JjbzRoMDQxMHFmZnA0czhnc3ltYzF3czM2N3lmazN1ZHdqcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WpA2PSDQr8bu1Pba5r/giphy.gif
 [Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
 [Laravel-url]: https://laravel.com
 [Filamentphp.com]: https://img.shields.io/static/v1?style=for-the-badge&message=Filament&color=222222&logo=Filament&logoColor=FDAE4B&label=
